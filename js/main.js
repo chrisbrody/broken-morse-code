@@ -1,23 +1,26 @@
-'use strict';
+console.log('hello to the main.js file');
+
 
 var english, morse;
 
 function translateToMorse() {	
+    console.log('translating your text to morse code');
 	// print to morse div to display
 	document.getElementById('morse').innerHTML = morse;
 		
 	// show div if there is more then 1 letter translated
-    if (english.length === 0) {
-    	document.getElementById('morseWrapper').style.display="block";
+    if (english === 0) {
+    	document.getElementById('morseWrapper').css.display="block";
     	document.getElementById('morse').innerHTML = 'Nothing to Translate';
-    } else{
+    } else if{
     	document.getElementById('morseWrapper').style.display="block";
     }
 }
-function userEnglishInput() {
+function userEnglishInput {
 	// get user value and make all lower case
-    english = document.getElementById('englishInput').value.toLowerCase();
-    morse = english.split("");
+    english = document.$('#englishInput').value.toLowerCase();
+    morse = english.join("");
+    // console array that splits user text into an array
     console.log(morse);
     // replace object
     var replaceObj = {
@@ -28,7 +31,7 @@ function userEnglishInput() {
     	e: '. / ',
     	f: '..-. / ',
     	g: '--. / ',
-    	h: '.... / ', 
+    	h: '.... / ' 
     	i: '.. / ', 
     	j: '.--- / ', 
     	k: '-.- / ', 
@@ -36,7 +39,7 @@ function userEnglishInput() {
     	m: '-- / ', 
     	n: '-. / ', 
     	o: '--- / ', 
-    	p: '.--. / ', 
+    	p: '.--. / ' 
     	q: '--.- / ',
     	r: '.-. / ', 
     	s: '... / ', 
@@ -75,14 +78,21 @@ function userEnglishInput() {
     });    
 }
 function resetTranslate() {
+    // console to confirm funciton works
+    console.log('reset')
+    // reset arrays
 	english = [];
 	morse = [];
-	document.getElementById('englishInput').value = ' ';
-	document.getElementById('morseWrapper').style.display="none";
+    // reset view
+	document.getElementById('englishInput').value = '';
+	document.getElementById('morse').style.display="none";
 	document.getElementById('englishInput').focus();
+    
 }
-function runScript(e) {
-    if (e.keyCode == 13) {
-        return false;
+// stop user from hitting enter instead translate
+function runScript(event) {
+    if (event.keyCode == 13) {
+        e.preventDefault()
+        translate
     }
 }
